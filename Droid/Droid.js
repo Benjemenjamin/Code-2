@@ -6,5 +6,4 @@ function getCommand(_state) {
         data: "forward"
     };
 }
-getCommand(1);
 //# sourceMappingURL=Droid.js.map
