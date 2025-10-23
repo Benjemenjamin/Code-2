@@ -1,4 +1,4 @@
-export function getCommand(_state: any): Command{
+function getCommand(_state: any): Command{
     return{
         module: "Chassis",
         method: "move",
