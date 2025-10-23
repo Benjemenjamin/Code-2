@@ -1,13 +1,4 @@
-export function getCommand(): Command{
-    const command: Command = {
-
-        module: "Chassis",
-        method: "move",
-        data: "forward"
-    }
-    console.log(command)
-    return command;
-}
+export namespace Droid {
 
 interface Command {
     module: string
@@ -15,3 +6,16 @@ interface Command {
     data: string
 }
 
+
+export function getCommand(): Command{
+    const command: Command = {
+
+        module: "Chassis",
+        method: "move",
+        data: "right"
+    }
+    console.log(command)
+    return command;
+}
+
+}
