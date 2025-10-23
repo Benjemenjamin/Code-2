@@ -5,6 +5,7 @@ function getCommand(_state: any): Command{
         data: "forward"
     }
 }
+getCommand(1)
 
 interface Command {
     module: string
