@@ -1,1 +1,1 @@
-{"version":3,"file":"Droid.js","sourceRoot":"","sources":["Droid.ts"],"names":[],"mappings":";AAAA,SAAS,UAAU,CAAC,MAAW;IAC3B,OAAM;QACF,MAAM,EAAE,SAAS;QACjB,MAAM,EAAE,MAAM;QACd,IAAI,EAAE,SAAS;KAClB,CAAA;AACL,CAAC"}
+{"version":3,"file":"Droid.js","sourceRoot":"","sources":["Droid.ts"],"names":[],"mappings":";AAAA,SAAS,UAAU,CAAC,KAAU;IAC1B,OAAM;QACF,MAAM,EAAE,SAAS;QACjB,MAAM,EAAE,MAAM;QACd,IAAI,EAAE,SAAS;KAClB,CAAA;AACL,CAAC"}

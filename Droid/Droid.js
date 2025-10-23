@@ -1,5 +1,5 @@
 "use strict";
-function getCommand(_state) {
+function getCommand(state) {
     return {
         module: "Chassis",
         method: "move",
