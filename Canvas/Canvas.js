@@ -84,12 +84,14 @@ function onLoadHandler() {
     }
     for (let i = 0; i <= 200; i++) {
         function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 5)];
+            console.log("color");
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
             }
             return color;
+            console.log();
         }
         function getRandomNumber() {
             return Math.floor(Math.random() * 800);

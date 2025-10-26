@@ -123,13 +123,17 @@ function onLoadHandler(): void {
 
     for (let i = 0; i <= 200; i++) {
 
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 5)];
+        function getRandomColor(): string {
+            console.log("color");
+            
+            const letters: string= '0123456789ABCDEF';
+            let color: string = '#';
+            for (let i: number = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
             }
             return color;
+            console.log();
+            
         }
 
         function getRandomNumber() {
