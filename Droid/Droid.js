@@ -9,6 +9,7 @@ export var Droid;
             data: "forward"
         };
         random = Math.floor(Math.random() * 5);
+        // command.data = ["forward", "back", "left", "right", "stop"] [random]
         switch (random) {
             case 0:
                 command.data = "forward";
@@ -29,7 +30,7 @@ export var Droid;
         // if (counter == false) {
         //   command.data = "left"
         //   counter = true;
-        //} else {
+        // } else {
         //     counter = false;
         // }
         console.log(command);
