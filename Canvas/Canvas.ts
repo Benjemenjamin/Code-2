@@ -2,6 +2,7 @@ window.addEventListener('load', onLoadHandler);
 
 
 function onLoadHandler(): void {
+   console.log('Alles geladen!');
     const canvas: HTMLCanvasElement = document.querySelector("canvas")!;
     const crc2: CanvasRenderingContext2D = canvas.getContext("2d")!;
     crc2.fillStyle = "#00ffe1f9";
@@ -15,7 +16,7 @@ function onLoadHandler(): void {
     crc2.beginPath();
     crc2.arc(400, 400, 40, 0, 2 * Math.PI);
     crc2.stroke();
-    console.log('Alles geladen!');
+    
 
     crc2.beginPath();
     crc2.arc(400, 200, 40, 0, 2 * Math.PI);
@@ -30,11 +31,11 @@ function onLoadHandler(): void {
     crc2.stroke();
 
     crc2.beginPath();
-    crc2.ellipse(300,300,300, 100, Math.PI / 4, 0, 2 * Math.PI)
+    crc2.ellipse(300, 300, 300, 100, Math.PI / 4, 0, 2 * Math.PI)
     crc2.stroke();
 
     crc2.beginPath();
-    crc2.ellipse(300,300,300, 100, Math.PI / 1.3, 0, 2 * Math.PI)
+    crc2.ellipse(300, 300, 300, 100, Math.PI / 1.3, 0, 2 * Math.PI)
     crc2.stroke();
 
     crc2.beginPath();
@@ -65,82 +66,93 @@ function onLoadHandler(): void {
     crc2.closePath()
     crc2.stroke()
 
-   
-   
-   type Vector = {
-    x1: number
-    x2: number
-   }
 
 
-    
-   function drawArc (_v1: Vector, _radius: number): void {
+    type Vector = {
+        x1: number
+        x2: number
+    }
+
+
+
+    //    function drawArc (_v1: Vector, _radius: number): void {
+
+    //         const pathtriangle: Path2D = new Path2D();
+    //          crc2.arc(_v1.x1, _v1.x2, _radius, 0, 2 * Math.PI);
+
+    //         // crc2.fillStyle = _colorfill;
+    //         // crc2.strokeStyle = _colorstroke;
+    //         // crc2.fill(pathtriangle);
+    //         crc2.stroke(pathtriangle);
+    //     }
+
+    //         for (let i: number = 0; i <= 100; i++) {
+
+    //             function randomNumber(): number{
+    //                 return Math.floor(Math.random()*800);
+    //             }
+    //             function randomRadius(): number{
+    //                 return Math.floor(Math.random()*100)
+    //             }
+
+    //             const v1: Vector = {x1: randomNumber(), x2: randomNumber()};
+    //             const radius: number = randomRadius()
+
+
+
+    //             drawArc(v1, radius);
+    //         }
+
+
+
+
+
+    function drawTriangle(_v1: Vector, _v2: Vector, _v3: Vector, _colorfill: string, _colorstroke: string): void {
 
         const pathtriangle: Path2D = new Path2D();
-         crc2.arc(_v1.x1, _v1.x2, _radius, 0, 2 * Math.PI);
-        
-        // crc2.fillStyle = _colorfill;
-        // crc2.strokeStyle = _colorstroke;
-        // crc2.fill(pathtriangle);
+        pathtriangle.moveTo(_v1.x1, _v1.x2);
+        pathtriangle.lineTo(_v2.x1, _v2.x2);
+        pathtriangle.lineTo(_v3.x1, _v3.x2);
+
+        pathtriangle.lineTo(_v1.x1, _v1.x2);
+        crc2.fillStyle = _colorfill;
+        crc2.strokeStyle = _colorstroke;
+        crc2.fill(pathtriangle);
         crc2.stroke(pathtriangle);
     }
-    
-        for (let i: number = 0; i <= 100; i++) {
-            
-            function randomNumber(): number{
-                return Math.floor(Math.random()*800);
-            }
-            function randomRadius(): number{
-                return Math.floor(Math.random()*100)
-            }
-            
-            const v1: Vector = {x1: randomNumber(), x2: randomNumber()};
-            const radius: number = randomRadius()
-            
-           
 
-            drawArc(v1, radius);
+    for (let i = 0; i <= 200; i++) {
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 5)];
+            }
+            return color;
         }
-    
 
-   
-   
-   
-   // function drawTriangle (_v1: Vector, _v2: Vector, _v3: Vector, _v4: Vector): void {
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 800);
+        }
 
-    //     const pathtriangle: Path2D = new Path2D();
-    //     pathtriangle.moveTo(_v1.x1, _v1.x2);
-    //     pathtriangle.lineTo(_v2.x1, _v2.x2);
-    //     pathtriangle.lineTo(_v3.x1, _v3.x2);
-    //     pathtriangle.lineTo(_v4.x1, _v4.x2);
-    //     pathtriangle.lineTo(_v1.x1, _v1.x2);
-    //     // crc2.fillStyle = _colorfill;
-    //     // crc2.strokeStyle = _colorstroke;
-    //     crc2.fill(pathtriangle);
-    //     crc2.stroke(pathtriangle);
-    // }
-    
-    //     for (let i: number = 0; i <= 10; i++) {
-            
-    //         function randomNumber(): number{
-    //             return Math.floor(Math.random()*800);
-    //         }
-            
-    //         const v1: Vector = {x1: randomNumber(), x2: randomNumber()};
-    //         const v2: Vector = {x1: randomNumber(), x2: randomNumber()};
-    //         const v3: Vector = {x1: randomNumber(), x2: randomNumber()};
-    //         const v4: Vector = {x1: randomNumber(), x2: randomNumber()};
+        let v1: Vector = { x1: getRandomNumber(), x2: getRandomNumber() };
+        let v2: Vector = { x1: getRandomNumber(), x2: getRandomNumber() };
+        let v3: Vector = { x1: getRandomNumber(), x2: getRandomNumber() };
+        let colorfill = getRandomColor();
+        let colorstroke = getRandomColor();
 
-    //         drawTriangle(v1, v2, v3, v4);
-    //     }
-    
+
+        drawTriangle(v1, v2, v3, colorfill, colorstroke);
+    }
+
 
     // crc2.fillText("Hello",350, 350)
-    crc2.strokeText("Hello",350, 350)
+    crc2.strokeText("Hello", 350, 350)
 
     const path: Path2D = new Path2D();
-path.arc(600, 600, 50, 0, 2 * Math.PI);
-crc2.stroke(path);
+    path.arc(600, 600, 50, 0, 2 * Math.PI);
+    crc2.stroke(path);
 
 
 
