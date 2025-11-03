@@ -1,6 +1,6 @@
-namespace Vector {
+namespace NVector {
 
-    class Vector {
+ class Vector {
         x: number = 0;
         y: number = 0;
 
