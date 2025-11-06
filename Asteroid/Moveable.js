@@ -31,9 +31,6 @@ var Asteroids;
                 this.position.y -= Asteroids.crc2.canvas.height;
             }
         }
-        draw() {
-            //    console.log("Moveable move"); 
-        }
     }
     Asteroids.Moveable = Moveable;
 })(Asteroids || (Asteroids = {}));

@@ -28,12 +28,10 @@ var Asteroids;
         // }
         window.setInterval(update, 20);
     }
-    function shootProjectile(_event) {
+    function shootProjectile(_origin) {
         console.log("Schoot projectile");
-        const origin = new Asteroids.Vector(_event.clientX - Asteroids.crc2.canvas.offsetLeft, _event.clientY - Asteroids.crc2.canvas.offsetTop);
-        const velocity = new Asteroids.Vector(0, 0);
-        velocity.random(100, 100);
-        const projectile = new Asteroids.Projectile(origin, velocity);
+        const velocity = Asteroids.Vector.getRandom(100, 100);
+        const projectile = new Asteroids.Projectile(_origin, velocity);
         moveables.push(projectile);
     }
     function shootLaser(_event) {

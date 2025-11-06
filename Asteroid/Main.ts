@@ -39,12 +39,10 @@ namespace Asteroids {
         window.setInterval(update, 20);
     }
 
-    function shootProjectile(_event: MouseEvent): void {
+    function shootProjectile(_origin: Vector): void {
         console.log("Schoot projectile");
-        const origin: Vector = new Vector(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
-        const velocity: Vector = new Vector(0, 0);
-        velocity.random(100, 100);
-        const projectile: Projectile = new Projectile(origin, velocity);
+        const velocity: Vector = Vector.getRandom(100, 100);
+        const projectile: Projectile = new Projectile(_origin, velocity);
         moveables.push(projectile);
     }
 

@@ -1,6 +1,6 @@
 namespace Asteroids {
     export class Projectile extends Moveable{
-        lifetime: number = 2;
+        private lifetime: number = 2;
 
         constructor(_position: Vector, _velocity: Vector) {
             super(_position);
@@ -10,7 +10,7 @@ namespace Asteroids {
           
         }
 
-        draw(): void {
+        public draw(): void {
             // console.log("Asteroid draw");
             crc2.save();
             crc2.translate(this.position.x, this.position.y);
@@ -18,7 +18,7 @@ namespace Asteroids {
             crc2.restore();
         }
 
-        move(_timeslice: number): void {
+        public move(_timeslice: number): void {
             super.move(_timeslice);
             this.lifetime -= _timeslice;
             if(this.lifetime < 0)

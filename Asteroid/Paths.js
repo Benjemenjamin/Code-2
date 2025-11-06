@@ -21,12 +21,12 @@ var Asteroids;
     }
     Asteroids.createPaths = createPaths;
     function createAsteroidPaths(_shapes) {
-        let paths = [];
-        for (let type of _shapes) {
-            let path = new Path2D();
+        const paths = [];
+        for (const type of _shapes) {
+            const path = new Path2D();
             let first = true;
             // console.group(type);
-            for (let coordinates of type) {
+            for (const coordinates of type) {
                 // console.log(coordinates);
                 if (first)
                     path.moveTo(coordinates[0], coordinates[1]);
@@ -41,7 +41,7 @@ var Asteroids;
         return paths;
     }
     function createUfoPath() {
-        let path = new Path2D();
+        const path = new Path2D();
         path.moveTo(20, 13);
         path.lineTo(27, 3);
         path.lineTo(38, 3);
