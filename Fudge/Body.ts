@@ -1,0 +1,73 @@
+namespace Test {
+    import f = FudgeCore;
+    export class Body extends f.Node {
+        private static bodyCount: number = 0;
+
+        public cmpMesh: f.ComponentMesh;
+        public cmpMaterial: f.ComponentMaterial;
+        public cmpBodyTransform: f.ComponentTransform;
+        public size: number;
+        public color: string;
+        public rotation: number;
+        public orbit: number;
+        public distance: number;
+        public id: number = 0;
+        public speed: number;
+
+        private mesh: f.Mesh;
+        private material: f.Material;
+
+        public constructor(_name: string, _size: number, _color: string, _rotation: number, _orbit: number, _distance: number, _speed: number) {
+            super(_name);
+            this.id = Body.bodyCount++;
+            this.size = _size;
+            this.color = _color;
+            this.rotation = _rotation;
+            this.distance = _distance;
+            this.orbit = 0;
+            this.speed = _speed;
+
+            this.mesh = new f.MeshSphere(_name + "Mesh", 32, 32);
+            this.cmpMesh = new f.ComponentMesh(this.mesh);
+            this.addComponent(this.cmpMesh);
+            this.cmpMesh.mtxPivot.scale(new f.Vector3(this.size, this.size, this.size));
+            
+            this.material = new f.Material(_name + "Material", f.ShaderLit, new f.CoatColored(f.Color.CSS(this.color)));
+            this.cmpMaterial = new f.ComponentMaterial(this.material);
+            this.addComponent(this.cmpMaterial);
+            
+            this.cmpBodyTransform = new f.ComponentTransform();
+            this.addComponent(this.cmpBodyTransform);
+            this.mtxLocal.translateX(this.distance);
+
+        }
+
+        public update(): void {
+            const rotationSpeed: number = 360 / this.speed;
+            const angle: number = rotationSpeed * f.Loop.timeFrameGame / 1000;
+
+            this.mtxLocal.rotateY(angle)
+
+            for (const child of this.getChildren()) {
+                (child as Body).update();
+            }
+        }
+
+        public createChild(_name: string, _size: number, _color: string, _rotation: number, _orbit: number, _distance: number, _speed: number): number {
+            const body: Body = new Body(_name, _size, _color, _rotation, _orbit, _distance, _speed);
+            this.addChild(body);
+            return (body.id);
+        }
+
+        public getPlanetChild(_id: number): Body | null {
+            for (const child of this.getChildren()) {
+                const body: Body = child as Body;
+                if (_id == body.id) {
+                    console.log(body);
+                    return body;
+                }
+            }
+            return null
+        }
+    }
+}
